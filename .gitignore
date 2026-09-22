@@ -1,0 +1,15 @@
+# Dependencies and local tool state
+node_modules/
+.vite/
+
+# Build output
+dist/
+preview/dist/
+
+# Local design-review artifacts
+.impeccable/
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+*.log

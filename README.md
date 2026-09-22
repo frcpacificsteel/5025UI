@@ -108,3 +108,18 @@ npm run typecheck
 npm run build
 npm run preview:build
 ```
+
+## Publishing
+
+Releases are public under the MIT license. Before publishing, authenticate to the
+`@pacific-steel-5025` npm scope and verify the packed files:
+
+```bash
+npm whoami
+npm pack --dry-run
+npm publish
+```
+
+`prepublishOnly` runs type checking and generates the distribution files before
+the publish step. Increment `version` with the appropriate npm command before
+each release (for example, `npm version patch`).

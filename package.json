@@ -3,6 +3,27 @@
   "version": "0.1.0",
   "description": "Pacific Steel 5025's accessible React component system.",
   "license": "MIT",
+  "author": "Pacific Steel 5025",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frcpacificsteel/5025UI.git"
+  },
+  "homepage": "https://github.com/frcpacificsteel/5025UI#readme",
+  "bugs": {
+    "url": "https://github.com/frcpacificsteel/5025UI/issues"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "base-ui",
+    "tailwind",
+    "frc",
+    "robotics",
+    "pacific-steel"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "type": "module",
   "sideEffects": [
     "**/*.css"
@@ -28,7 +49,11 @@
     "build": "tsup",
     "typecheck": "tsc --noEmit",
     "preview": "vite --config preview/vite.config.ts",
-    "preview:build": "vite build --config preview/vite.config.ts"
+    "preview:build": "vite build --config preview/vite.config.ts",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "@base-ui/react": "^1.8.0",
