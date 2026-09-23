@@ -5,21 +5,21 @@ Pacific Steel 5025's React component system for scouting, field operations, outr
 ## Install
 
 ```bash
-npm install @pacific-steel-5025/ui @base-ui/react react react-dom tailwindcss
+npm install @frcpacificsteel/ui @base-ui/react react react-dom tailwindcss
 ```
 
 Import the component styles once in a Next.js root layout or global stylesheet.
 
 ```tsx
 // app/layout.tsx
-import '@pacific-steel-5025/ui/styles.css';
+import '@frcpacificsteel/ui/styles.css';
 ```
 
 For the matching Tailwind v4 utilities, add the token entry to your global CSS.
 
 ```css
 @import "tailwindcss";
-@import "@pacific-steel-5025/ui/tailwind.css";
+@import "@frcpacificsteel/ui/tailwind.css";
 ```
 
 The package includes Encode Sans and Encode Sans Semi Expanded, so applications do not need a separate font loader.
@@ -41,7 +41,7 @@ import {
   DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from '@pacific-steel-5025/ui';
+} from '@frcpacificsteel/ui';
 
 export function ScoutReport() {
   return (
@@ -111,15 +111,21 @@ npm run preview:build
 
 ## Publishing
 
-Releases are public under the MIT license. Before publishing, authenticate to the
-`@pacific-steel-5025` npm scope and verify the packed files:
+Releases are public under the MIT license. Publishing happens through GitHub
+Actions, never a developer machine. The `Publish package` workflow only runs for
+version tags (`v*`), verifies the tag matches `package.json`, and requires
+approval through the `npm-publish` GitHub environment.
+
+Configure npm Trusted Publishing for `frcpacificsteel/5025UI` and the
+`publish.yml` workflow in the package's npm settings. This lets GitHub Actions
+use short-lived OIDC credentials instead of an npm access token.
+
+To release a new version:
 
 ```bash
-npm whoami
-npm pack --dry-run
-npm publish
+npm version <major|minor|patch>
+git push origin main --follow-tags
 ```
 
-`prepublishOnly` runs type checking and generates the distribution files before
-the publish step. Increment `version` with the appropriate npm command before
-each release (for example, `npm version patch`).
+Approve the pending `npm-publish` environment deployment in GitHub to complete
+the release.
