@@ -7,7 +7,7 @@ export default defineConfig({
   root: resolve(import.meta.dirname),
   resolve: {
     alias: {
-      '@pacific-steel-5025/ui': resolve(import.meta.dirname, '../src/index.ts'),
+      '@frcpacificsteel/ui': resolve(import.meta.dirname, '../src/index.ts'),
     },
   },
   // The catalog intentionally imports every component into one visual inventory.

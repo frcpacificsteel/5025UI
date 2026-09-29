@@ -24,6 +24,18 @@ For the matching Tailwind v4 utilities, add the token entry to your global CSS.
 
 The package includes Encode Sans and Encode Sans Semi Expanded, so applications do not need a separate font loader.
 
+The three team SVGs are also exported as React components. Use the horizontal variant that matches the surface, or the icon for compact spaces. The loader uses the icon by default.
+
+```tsx
+import { LogoIcon, LogoHorizontal } from '@frcpacificsteel/ui';
+
+<LogoHorizontal mode="light" /> // on a light background
+<LogoHorizontal mode="dark" />  // on a dark background
+<LogoIcon alt="" />              // decorative mark
+```
+
+Explicit `LogoHorizontalLightMode` and `LogoHorizontalDarkMode` components are available, along with `logoIconSrc`, `logoHorizontalLightSrc`, and `logoHorizontalDarkSrc` for non-React uses.
+
 ## Use
 
 ```tsx
@@ -68,7 +80,7 @@ Interactive components that use state or browser APIs belong below a Next.js `"u
 
 ## Component families
 
-- Foundations: typography, badge, avatar, separator, skeleton, spinner, aspect ratio, loader
+- Foundations: logos, typography, badge, avatar, separator, skeleton, spinner, aspect ratio, loader
 - Actions: button, button group, toggle, toggle group, toolbar
 - Forms: input, textarea, native select, select, combobox, checkbox, switch, radio group, slider, number field, OTP field, input group, field helpers, date picker, calendar
 - Navigation: breadcrumb, tabs, pagination, menubar, navigation menu, sidebar

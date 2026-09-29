@@ -5,6 +5,7 @@ export { Badge, type BadgeProps } from './components/badge';
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './components/card';
 export { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogClose } from './components/dialog';
 export { Loader, type LoaderProps } from './components/loader';
+export { LogoIcon, LogoHorizontal, LogoHorizontalLightMode, LogoHorizontalDarkMode, logoIconSrc, logoHorizontalLightSrc, logoHorizontalDarkSrc, type LogoProps, type LogoHorizontalProps } from './components/logo';
 export { Field, FieldHint, FieldError } from './components/form';
 export { Label, Textarea, NativeSelect, Checkbox, Switch, RadioGroup, RadioGroupItem, Slider, Progress, Meter, Toggle, ToggleGroup, ToggleGroupItem, InputGroup, InputGroupAddon, ButtonGroup, NumberField, NumberFieldGroup, NumberFieldInput, NumberFieldIncrement, NumberFieldDecrement, InputOTP } from './components/controls';
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, Collapsible, CollapsibleTrigger, CollapsibleContent, Tabs, TabsList, TabsTrigger, TabsContent } from './components/disclosure';

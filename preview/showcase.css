@@ -6,6 +6,13 @@ button, input, textarea, select { font: inherit; }
 .catalog-rail { position: sticky; top: 0; display: flex; height: 100dvh; flex-direction: column; padding: 1.75rem 1.25rem; background: var(--ps-surface); border-right: 1px solid var(--ps-line); }
 .catalog-brand { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-bottom: 1.5rem; color: var(--ps-ink-strong); border-bottom: 1px solid var(--ps-line); text-decoration: none; }
 .catalog-brand img { width: 8rem; max-height: 2rem; object-fit: contain; object-position: left center; }
+.logo-spec { display: flex; align-items: stretch; flex-wrap: wrap; gap: 1rem; width: 100%; }
+.logo-spec > div { display: grid; align-content: center; justify-items: start; gap: 1rem; min-width: 11rem; flex: 1; padding: 1.5rem; border: 1px solid var(--ps-line); border-radius: var(--ps-radius-md); background: #fff; }
+.logo-spec .ps-logo--horizontal { width: min(100%, 13rem); }
+.logo-spec .ps-logo--icon { width: 3rem; }
+.logo-spec span { color: #61717a; font-size: var(--ps-text-xs); }
+.logo-spec > .logo-spec__dark { background: #072b3e; border-color: #072b3e; }
+.logo-spec__dark span { color: #c8d9e2; }
 .catalog-brand span { color: var(--ps-ink-faint); font-size: var(--ps-text-xs); white-space: nowrap; }
 .catalog-rail nav { display: grid; gap: 0.125rem; margin-top: 1.5rem; }
 .catalog-rail nav a { padding: 0.6rem 0.75rem; color: var(--ps-ink-muted); border-radius: var(--ps-radius-sm); font-size: var(--ps-text-sm); font-weight: 500; text-decoration: none; }

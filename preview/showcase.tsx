@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { IconArrowLeft, IconArrowRight, IconCheck, IconCopy } from '@tabler/icons-react';
-import * as UI from '@pacific-steel-5025/ui';
-import logo from '../Logo-H-Dark.svg';
-import logoLight from '../Logo-H-Light.svg';
-import logoIcon from '../Logo-Icon.svg';
+import * as UI from '@frcpacificsteel/ui';
 import './showcase.css';
 
 const robotOptions = ['Alpha', 'Beta', 'Practice bot'];
@@ -56,18 +53,18 @@ function ShowcaseBody() {
     return () => { observer.disconnect(); window.removeEventListener('hashchange', updateFromHash); };
   }, []);
   const copyInstall = async () => {
-    await navigator.clipboard?.writeText('npm install @pacific-steel-5025/ui');
+    await navigator.clipboard?.writeText('npm install @frcpacificsteel/ui');
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   };
   return <>
-    <UI.Loader key={loaderRun} markSrc={logoIcon} />
+    <UI.Loader key={loaderRun} />
     <div className="catalog-shell" id="top">
       <aside className="catalog-rail">
-        <a className="catalog-brand" href="#top"><img src={dark ? logoLight : logo} alt="Pacific Steel 5025" /><span>UI Library</span></a>
+        <a className="catalog-brand" href="#top"><UI.LogoHorizontal mode={dark ? 'dark' : 'light'} /><span>UI Library</span></a>
         <nav aria-label="Component sections">{nav.map(([href, label]) => <a key={href} href={`#${href}`} aria-current={activeSection === href ? 'location' : undefined} onClick={() => setActiveSection(href)}>{label}</a>)}</nav>
         <label className="catalog-section-picker"><span>Browse components</span><select value={activeSection} onChange={(event) => { const section = event.target.value; setActiveSection(section); window.location.hash = section; }}>{nav.map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></label>
-        <div className="catalog-rail__meta"><b>React · Base UI</b><span>Tailwind v4 ready</span><code>v0.1.0</code></div>
+        <div className="catalog-rail__meta"><b>React · Base UI</b><span>Tailwind v4 ready</span><code>v0.1.1</code></div>
       </aside>
 
       <main className="catalog-main">
@@ -75,7 +72,7 @@ function ShowcaseBody() {
 
         <section className="catalog-hero">
           <div className="catalog-hero__copy"><h1>A shared interface system for team software.</h1><p>React components, CSS variables, and Base UI behavior for scouting, field operations, outreach, and robot software.</p></div>
-          <aside className="catalog-quickstart" aria-label="Get started"><span>GET STARTED</span><h2>Use it in a project</h2><p>Install the package, import the styles once, then compose the shared primitives.</p><code>npm install @pacific-steel-5025/ui</code><UI.Button size="sm" variant="outline" onClick={copyInstall}>{copied ? <IconCheck /> : <IconCopy />}{copied ? 'Copied' : 'Copy install command'}</UI.Button><a href="#foundations">View tokens and foundations</a></aside>
+          <aside className="catalog-quickstart" aria-label="Get started"><span>GET STARTED</span><h2>Use it in a project</h2><p>Install the package, import the styles once, then compose the shared primitives.</p><code>npm install @frcpacificsteel/ui</code><UI.Button size="sm" variant="outline" onClick={copyInstall}>{copied ? <IconCheck /> : <IconCopy />}{copied ? 'Copied' : 'Copy install command'}</UI.Button><a href="#foundations">View tokens and foundations</a></aside>
         </section>
 
         <Section id="foundations" eyebrow="01 / SYSTEM" title="Foundations" description="The same restrained type, color, spacing, and status language used across the wiki.">
@@ -83,6 +80,7 @@ function ShowcaseBody() {
           <Demo title="Brand palette"><div className="token-swatches">{[['Red','var(--ps-red-100)'],['Del Mar','var(--ps-del-mar-blue-100)'],['Pacific','var(--ps-pacific-blue-100)'],['Gold','var(--ps-gold-100)'],['Slate','var(--ps-slate-100)']].map(([name,color]) => <div key={name}><i style={{background:color}}/><span>{name}</span></div>)}</div></Demo>
           <Demo title="Status & identity"><div className="stack"><div className="row"><UI.Badge>Ready</UI.Badge><UI.Badge tone="gold">Queued</UI.Badge><UI.Badge tone="red">Blocked</UI.Badge><UI.Badge tone="slate">Draft</UI.Badge></div><div className="row"><UI.Avatar name="Amelia Rivera"/><UI.Avatar name="Diego Martinez"/><UI.Avatar name="Pacific Steel"/></div></div></Demo>
           <Demo title="Application loader"><div className="stack"><UI.Muted>Use the logo treatment for application startup—not routine content loading.</UI.Muted><UI.Button variant="outline" size="sm" onClick={() => setLoaderRun((run) => run + 1)}>Replay startup loader</UI.Button></div></Demo>
+          <Demo title="Team logos" wide><div className="logo-spec"><div><UI.LogoHorizontalLightMode /><span>Light surfaces</span></div><div className="logo-spec__dark"><UI.LogoHorizontalDarkMode /><span>Dark surfaces</span></div><div><UI.LogoIcon /><span>Standalone mark</span></div></div></Demo>
         </Section>
 
         <Section id="actions" eyebrow="02 / INPUT" title="Actions" description="Buttons and compact controls communicate priority without oversized treatments or excessive decoration.">
@@ -133,10 +131,10 @@ function ShowcaseBody() {
           <Demo title="Resizable workspace" wide><UI.ResizablePanels first={<div className="panel-copy"><b>System map</b><p>Drag the divider or use arrow keys.</p></div>} second={<div className="panel-copy panel-copy--blue"><b>Inspector</b><p>Selected subsystem details appear here.</p></div>}/></Demo>
           <Demo title="Carousel" wide><UI.Carousel label="Team workflows">{['Scouting','Pit operations','Outreach','Robot telemetry'].map((name,index)=><UI.Card key={name}><UI.CardHeader><UI.CardTitle>{name}</UI.CardTitle><UI.CardDescription>{index+1 < 10 ? `0${index+1}` : index+1} · Workflow template</UI.CardDescription></UI.CardHeader><UI.CardContent><UI.Muted>Purpose-built patterns with shared states and tokens.</UI.Muted></UI.CardContent></UI.Card>)}</UI.Carousel></Demo>
           <Demo title="Sidebar shell" wide><UI.SidebarProvider><UI.Sidebar><UI.SidebarHeader><b>Operations</b></UI.SidebarHeader><UI.SidebarContent><UI.SidebarGroup><UI.SidebarGroupLabel>Workspace</UI.SidebarGroupLabel><UI.SidebarMenu><UI.SidebarMenuItem><UI.SidebarMenuButton active><Icon>◫</Icon>Overview</UI.SidebarMenuButton></UI.SidebarMenuItem><UI.SidebarMenuItem><UI.SidebarMenuButton><Icon>⌁</Icon>Scouting</UI.SidebarMenuButton></UI.SidebarMenuItem><UI.SidebarMenuItem><UI.SidebarMenuButton><Icon>✓</Icon>Checklists</UI.SidebarMenuButton></UI.SidebarMenuItem></UI.SidebarMenu></UI.SidebarGroup></UI.SidebarContent><UI.SidebarFooter>Team 5025</UI.SidebarFooter></UI.Sidebar><UI.SidebarInset><UI.SidebarTrigger/><div className="sidebar-demo-copy"><UI.Heading level={3}>Field operations</UI.Heading><UI.Muted>Application shells retain the same compact rhythm as individual components.</UI.Muted></div></UI.SidebarInset></UI.SidebarProvider></Demo>
-          <Demo title="Aspect ratio"><UI.AspectRatio ratio={16/9} className="aspect-demo"><img src={logoIcon} alt="Pacific Steel wave mark"/><span>16:9 media frame</span></UI.AspectRatio></Demo>
+          <Demo title="Aspect ratio"><UI.AspectRatio ratio={16/9} className="aspect-demo"><UI.LogoIcon alt="Pacific Steel wave mark"/><span>16:9 media frame</span></UI.AspectRatio></Demo>
         </Section>
 
-        <footer className="catalog-footer"><img src={logoIcon} alt=""/><div><b>Built for Pacific Steel 5025.</b><span>React 18/19 · Base UI · Tailwind CSS v4</span></div><a href="#top">Back to top ↑</a></footer>
+        <footer className="catalog-footer"><UI.LogoIcon alt=""/><div><b>Built for Pacific Steel 5025.</b><span>React 18/19 · Base UI · Tailwind CSS v4</span></div><a href="#top">Back to top ↑</a></footer>
       </main>
     </div>
   </>;

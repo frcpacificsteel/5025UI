@@ -1,8 +1,9 @@
 import * as React from 'react';
+import { logoIconSrc } from './logo';
 
 export type LoaderProps = {
   /** Path or imported URL for the Pacific Steel icon mark. */
-  markSrc: string;
+  markSrc?: string;
   label?: string;
   /** Pass a value to control visibility. Omit for the wiki's initial-load behavior. */
   open?: boolean;
@@ -12,7 +13,7 @@ export type LoaderProps = {
 };
 
 /** The Pacific Steel Wiki's initial loading treatment, ported for React. */
-export function Loader({ markSrc, label = 'Loading the Pacific Steel 5025 Wiki', open, duration, onComplete }: LoaderProps) {
+export function Loader({ markSrc = logoIconSrc, label = 'Loading the Pacific Steel 5025 Wiki', open, duration, onComplete }: LoaderProps) {
   const controlled = open !== undefined;
   const [phase, setPhase] = React.useState<'visible' | 'leaving' | 'hidden'>(open === false ? 'hidden' : 'visible');
 
